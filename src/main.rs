@@ -135,7 +135,7 @@ where
 
     pub fn run(&mut self, program: &[Command]) -> Result<(), MachineError> {
         for (index, command) in program.iter().enumerate() {
-            match dbg!(command) {
+            match command {
                 Command::Left => self.pointer -= 1,
                 Command::Right => self.pointer += 1,
                 Command::Add => self.memory[self.pointer.0] += 1,
@@ -176,8 +176,6 @@ where
                 }
                 Command::Pool => return Err(MachineError::UnmatchedPool),
             }
-
-            println!("{:?}", &self.memory[0..9]);
         }
 
         Ok(())
